@@ -31,7 +31,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='![](https://i.imgur.com/MPBArXC.gif)' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/MPBArXC.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 (If the above link does not work, then please find the gif here: https://hackmd.io/@cjp-student/HkY4_cjCw)
 
