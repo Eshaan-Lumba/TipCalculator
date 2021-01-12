@@ -47,7 +47,7 @@ class TipCalculatorViewController: UIViewController
     }
     
     
-    //MARK: - Target / Action
+    
     
     @IBAction func tipSliderValueChanged(sender: Any) {
         tipPercentageLabel.text = String(format: "Tip: %02d%%", Int(tipPercentageSlider.value))
