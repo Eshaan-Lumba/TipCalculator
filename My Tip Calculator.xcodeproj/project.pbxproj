@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		40547FA025CE944900983E84 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40547F9F25CE944900983E84 /* SettingsViewController.swift */; };
 		40F63CC425ADBD280037DFEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F63CC325ADBD280037DFEE /* AppDelegate.swift */; };
 		40F63CC625ADBD280037DFEE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F63CC525ADBD280037DFEE /* SceneDelegate.swift */; };
 		40F63CCB25ADBD280037DFEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40F63CC925ADBD280037DFEE /* Main.storyboard */; };
@@ -37,7 +36,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		40547F9F25CE944900983E84 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		40F63CC025ADBD280037DFEE /* My Tip Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Tip Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		40F63CC325ADBD280037DFEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		40F63CC525ADBD280037DFEE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,7 +109,6 @@
 				40F63CCC25ADBD2A0037DFEE /* Assets.xcassets */,
 				40F63CCE25ADBD2A0037DFEE /* LaunchScreen.storyboard */,
 				40F63CD125ADBD2A0037DFEE /* Info.plist */,
-				40547F9F25CE944900983E84 /* SettingsViewController.swift */,
 			);
 			path = "My Tip Calculator";
 			sourceTree = "<group>";
@@ -267,7 +264,6 @@
 				40F63CC425ADBD280037DFEE /* AppDelegate.swift in Sources */,
 				40F63D1225AE2E930037DFEE /* TipCalculator.swift in Sources */,
 				40F63D0D25AE29690037DFEE /* TipCalculatorViewController.swift in Sources */,
-				40547FA025CE944900983E84 /* SettingsViewController.swift in Sources */,
 				40F63CC625ADBD280037DFEE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
