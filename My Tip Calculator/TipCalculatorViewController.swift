@@ -6,8 +6,19 @@
 //
 
 import UIKit
+extension Formatter {
+    static let withSeparator: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = ","
+        return formatter
+    }()
+}
+extension Numeric {
+    var formattedWithSeparator: String { Formatter.withSeparator.string(for: self) ?? "" }
+}
 
-class TipCalculatorViewController: UIViewController
+class TipCalculatorViewController: UIViewController, UITextFieldDelegate
 {
     
     @IBOutlet weak var amountBeforeTaxTextField: UITextField!
@@ -15,21 +26,58 @@ class TipCalculatorViewController: UIViewController
     @IBOutlet weak var tipPercentageSlider: UISlider!
     @IBOutlet weak var numberOfPeopleStepper: UIStepper!
     @IBOutlet weak var numberOfPeopleLabel: UILabel!
-    @IBOutlet weak var totalTipLabel: UILabel!
     
+    @IBOutlet weak var totalTipLabel: UILabel!
     @IBOutlet weak var totalResultLabel: UILabel!
     @IBOutlet weak var eachPersonAmount: UILabel!
     
     
+    @IBOutlet weak var currencyTotal: UILabel!
+    @IBOutlet weak var currencyTotalAmount: UILabel!
+    @IBOutlet weak var currencyEachPerson: UILabel!
     
     var tipCalculator = TipCalculator(amountBeforeTax: 0, tipPercentage: 0.10)
     
    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //Leaves value for <10 mins
+        amountBeforeTaxTextField?.delegate = self
         amountBeforeTaxTextField.becomeFirstResponder()
+        let userDefaults = UserDefaults.standard;
+        if let timedArray = userDefaults.object(forKey: "timedString") as? NSArray {
+          if let aThen = timedArray.lastObject as? NSDate  {
+            if ((NSDate.timeIntervalSinceReferenceDate - aThen.timeIntervalSinceReferenceDate) < 10*60) {
+                amountBeforeTaxTextField!.text = timedArray.firstObject as? String
+            }
+          }
+        }
+      }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let a = NSArray(arrayLiteral: textField.text!, NSDate())
+        let userDefaults = UserDefaults.standard;
+        userDefaults.set(a, forKey:"timedString");
+      }
+      
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+      }
+    
+    
+    
+    
+    @IBAction func didTapButton () {
+        let vc = storyboard?.instantiateViewController(identifier: "settings") as! SettingsViewController
+        vc.modalPresentationStyle = .fullScreen
+        vc.completionHandler = {text in
+            self.currencyTotal.text = text
+            self.currencyTotalAmount.text = text
+            self.currencyEachPerson.text = text
+        }
+        present(vc, animated: true)
+        
     }
     
     func calculateBill() {
@@ -40,10 +88,23 @@ class TipCalculatorViewController: UIViewController
     }
     
     func updateUI() {
-        totalResultLabel.text = String(format: "$%0.2f", tipCalculator.totalAmount)
+        
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .currency
+        currencyFormatter.locale = Locale.current
+        
+        totalResultLabel.text = String(format: "%0.2f", tipCalculator.totalAmount)
         let numberOfPeople: Int = Int(numberOfPeopleStepper.value)
-        eachPersonAmount.text = String(format: "$%0.2f", tipCalculator.totalAmount / Double(numberOfPeople))
-        totalTipLabel.text = String(format: "$%0.2f", tipCalculator.tipAmount)
+        eachPersonAmount.text = String(format: "%0.2f", tipCalculator.totalAmount / Double(numberOfPeople))
+        totalTipLabel.text = String(format: "%0.2f", tipCalculator.tipAmount)
+        
+        totalResultLabel.text = currencyFormatter.string(from: NSNumber(value: tipCalculator.totalAmount))!
+        
+        totalTipLabel.text = currencyFormatter.string(from: NSNumber(value: tipCalculator.tipAmount))!
+        
+        eachPersonAmount.text = currencyFormatter.string(from: NSNumber(value: tipCalculator.totalAmount / Double(numberOfPeople)))!    
+        
     }
     
     
@@ -63,6 +124,8 @@ class TipCalculatorViewController: UIViewController
     @IBAction func amountBeforeTaxTextfieldChanged(sender: Any){
         calculateBill()
     }
+    
+   
     
     
 }
