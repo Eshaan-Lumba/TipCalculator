@@ -66,20 +66,6 @@ class TipCalculatorViewController: UIViewController, UITextFieldDelegate
       }
     
     
-    
-    
-    @IBAction func didTapButton () {
-        let vc = storyboard?.instantiateViewController(identifier: "settings") as! SettingsViewController
-        vc.modalPresentationStyle = .fullScreen
-        vc.completionHandler = {text in
-            self.currencyTotal.text = text
-            self.currencyTotalAmount.text = text
-            self.currencyEachPerson.text = text
-        }
-        present(vc, animated: true)
-        
-    }
-    
     func calculateBill() {
         tipCalculator.tipPercentage = Double(tipPercentageSlider.value) / 100.0
         tipCalculator.amountBeforeTax = (amountBeforeTaxTextField.text! as NSString).doubleValue
