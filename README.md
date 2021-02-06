@@ -4,7 +4,7 @@
 
 Submitted by: **Eshaan Lumba**
 
-Time spent: **4.5** hours spent in total
+Time spent: **6** hours spent in total
 
 ## User Stories
 
@@ -16,8 +16,8 @@ The following **required** functionality is complete:
 The following **optional** features are implemented:
 
 * [ ] UI animations
-* [ ] Remembering the bill amount across app restarts (if <10mins)
-* [ ] Using locale-specific currency and currency thousands separators.
+* [X] Remembering the bill amount across app restarts (if <10mins)
+* [X] Using locale-specific currency and currency thousands separators.
 * [X] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
@@ -31,20 +31,17 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://i.imgur.com/MPBArXC.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/cfzGzc36v8.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-(If the above link does not work, then please find the gif here: https://hackmd.io/@cjp-student/HkY4_cjCw)
-
-
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
 
 I got stuck a few times when reference connecting the UI objects. I had renamed the IBOutlet variable after 
-reference connecting it, which caused the app to crash. Apart from this, I had no major issues. 
+reference connecting it, which caused the app to crash. I also took some time when adding the
+feature that remembers the bill amount across app restarts since I was unsure on what methods to use to 
+implement it. Apart from this, I had no major issues. 
 
 
 ## License
